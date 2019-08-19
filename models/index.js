@@ -14,14 +14,12 @@ const Venue = VenueModel(db, Sequelize);
 
 Venue.belongsToMany(User, {
   onDelete: "cascade",
-  through: "user_venues",
-  foreignKey: "user_id"
+  through: "user_venues"
 });
 
 User.belongsToMany(Venue, {
   onDelete: "cascade",
-  through: "user_venues",
-  foreignKey: "venue_id"
+  through: "user_venues"
 });
 
 User.beforeCreate(async (user, options) => {
