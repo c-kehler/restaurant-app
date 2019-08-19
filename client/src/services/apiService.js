@@ -59,3 +59,16 @@ export const addRestaurant = async data => {
     throw e;
   }
 };
+
+export const removeFavRestaurant = async data => {
+  try {
+    console.log(data);
+    const response = await apiClient.put("/auth/signup", data);
+    const { token, user } = response.data;
+    localStorage.setItem("token", token);
+    console.log(user);
+    return user;
+  } catch (e) {
+    throw e;
+  }
+};

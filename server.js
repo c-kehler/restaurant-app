@@ -69,11 +69,24 @@ app.post("/dashboard/:user_id", async (req, res) => {
   }
 });
 
+app.put("/dashboard/:user_id/:venue_id", async (req, res) => {
+  try {
+    const { user_id, venue_id } = req.params;
+    const user = await User.findByPk(user_id);
+    const venue = await Venue.findByPk(venue_id);
+    await user.removeVenue(venue);
+    res.send(user);
+  } catch (e) {
+    throw e;
+  }
+});
+
 if (process.env.NODE_ENV == "production") {
   app.use("*", (req, res) =>
     res.sendFile(path.join(__dirname, "./client/build", "index.html"))
   );
 }
+
 app.listen(PORT, () =>
   console.log(`App is up and running listening on port ${PORT}`)
 );
