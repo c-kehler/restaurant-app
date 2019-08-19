@@ -40,7 +40,6 @@ class App extends React.Component {
   loginUser = async credentials => {
     try {
       const user = await login(credentials);
-
       this.setState(state => {
         return {
           isSignedIn: true,
@@ -76,16 +75,15 @@ class App extends React.Component {
 
   render() {
     const { isSignedIn, user } = this.state;
-
     return (
-      <div className="App">
+      <div className="app-container">
         <nav>
           <div>
             <Link to="/">Home</Link>
           </div>
           {isSignedIn && (
             <div>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to={`/dashboard`}>Dashboard</Link>
             </div>
           )}
           {!isSignedIn ? (
@@ -103,7 +101,7 @@ class App extends React.Component {
         <main>
           <Route exact path="/" component={Home} />
           <Protectedroute
-            path="/dashboard"
+            path={`/dashboard/`}
             user={user}
             venues={user.venues}
             component={Dashboard}

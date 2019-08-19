@@ -40,7 +40,6 @@ class LoginForm extends React.Component {
   render() {
     const { isSignedIn } = this.props;
     const { showError } = this.state;
-
     let errorMessage;
     if (showError) {
       errorMessage = (
@@ -50,6 +49,7 @@ class LoginForm extends React.Component {
       );
     }
     if (isSignedIn) {
+      console.log(this.props);
       return <Redirect to="/dashboard" />;
     }
     return (
@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
           <div>
             <label>password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               onChange={this.handleTextInput}
               value={this.state.password}

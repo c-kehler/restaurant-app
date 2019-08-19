@@ -46,3 +46,16 @@ export const signUp = async data => {
     throw e;
   }
 };
+
+export const addRestaurant = async data => {
+  try {
+    console.log(data);
+    const response = await apiClient.post("/auth/signup", data);
+    const { token, user } = response.data;
+    localStorage.setItem("token", token);
+    console.log(user);
+    return user;
+  } catch (e) {
+    throw e;
+  }
+};

@@ -4,6 +4,7 @@ function Dashboard(props) {
   const { user, venues } = props;
 
   let venueToShow;
+  console.log(user);
 
   if (venues) {
     venueToShow = venues[0].address;

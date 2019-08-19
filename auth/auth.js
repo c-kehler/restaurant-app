@@ -38,11 +38,12 @@ passport.use(
     async (email, password, done) => {
       try {
         // find user by their email
+        // console.log(id);
         const user = await User.findOne({
           where: { email: email },
           include: [{ model: Venue, through: "user_venues" }]
         });
-
+        // console.log(user.id);
         // console.log(user.email);
         // console.log(`*** user: ${user} ***`);
         if (!user) {
@@ -62,6 +63,7 @@ passport.use(
     }
   )
 );
+
 passport.use(
   "signup",
   new LocalStrategy(
