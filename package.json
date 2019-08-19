@@ -13,13 +13,24 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
     "op": "0.0.6",
     "passport": "^0.4.0",
-    "pg": "^7.12.1"
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.12.1",
+    "sequelize": "^5.15.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "db:init": "dropdb --if-exists express_auth_db && createdb express_auth_db",
+    "db:reset": "node ./scripts/resetDb.js",
+    "db:seed": "node ./scripts/seedDb.js",
+    "db:go": "npm run db:reset && npm run db:seed"
   },
   "repository": {
     "type": "git",
