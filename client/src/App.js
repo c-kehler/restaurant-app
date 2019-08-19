@@ -102,7 +102,12 @@ class App extends React.Component {
 
         <main>
           <Route exact path="/" component={Home} />
-          <Protectedroute path="/dashboard" user={user} component={Dashboard} />
+          <Protectedroute
+            path="/dashboard"
+            user={user}
+            venues={user.venues}
+            component={Dashboard}
+          />
           <Route
             path="/login"
             render={props => (

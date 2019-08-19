@@ -13,6 +13,7 @@ const apiClient = axios.create({
 export const login = async data => {
   try {
     const response = await apiClient.post("/auth/login", data);
+    console.log(data);
     const { token, user } = response.data;
 
     localStorage.setItem("token", token);
