@@ -1,5 +1,8 @@
-.App {
-  text-align: center;
+#root {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .ratingCircle {
@@ -8,36 +11,66 @@
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, 0.913);
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   font-size: 30px;
   font-weight: bold;
+  margin-top: -30px;
+  border: white solid 3px;
 }
 
 .ratingcard {
   display: flex;
+  align-self: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 50vh;
   width: 250px;
-  min-height: 300px;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding-bottom: 10px;
-  
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+
   h1 {
+    font-weight: 700;
+    font-size: 20px;
     margin-top: 5px;
-    font-weight: bold;
-    font-size:20px;
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
+  .phone-number {
+    margin-top: -10px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: grey;
+  }
+
+  .venue-summary {
+    color: black;
+    padding: 0px 5px 0px 5px;
+    color: grey;
+    margin-top: -10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
 img {
   width: 100%;
-  height: 100%;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  height: 200px;
   object-fit: cover;
+  object-position: 0% 70%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: -10px;
 }
+
+.ratingandheader {
+  display: flex;
+  flex-direction: row;
+}
+
+// * {
+//   border: red solid 1px;
+// }

@@ -12,7 +12,6 @@ class RatingCard extends Component {
     return (
       <div className="ratingcard">
           <VenueInfo />
-          <Ratings />
       </div>
     );
   }

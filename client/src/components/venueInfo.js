@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
-import Search from './search'
+import Search from "./search";
+import Ratings from "./Ratings";
 
 class VenueInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cardData: [],
-      input: ''
+      input: ""
     };
   }
   async componentDidMount() {
@@ -28,24 +29,30 @@ class VenueInfo extends Component {
       });
   }
 
-  handleChange = (event) => {
-    this.setState({input: event.target.value})
-  }
+  handleChange = event => {
+    this.setState({ input: event.target.value });
+  };
 
   render() {
     return (
       <React.Fragment>
-      
         {this.state.cardData.map(data => (
           <React.Fragment>
             <img src={data.image_url} />
-            <h1 className = 'restaurantName'>{data.name}</h1>
-            <p>{data.display_phone}</p>
+            <div className="ratingandheader">
+              <Ratings />
+              <div>
+                <h1 className="restaurantName">{data.name}</h1>
+                <p className="phone-number">{data.display_phone}</p>
+              </div>
+            </div>
+            <p className="venue-summary">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore{" "}
+            </p>
           </React.Fragment>
         ))}
-        
       </React.Fragment>
-      
     );
   }
 }

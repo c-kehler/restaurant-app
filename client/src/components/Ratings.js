@@ -10,16 +10,16 @@ class Ratings extends Component {
     };
   }
 
-  async componentDidMount()  {
-     
-      await axios.get(
-        `https://api.foursquare.com/v2/venues/search?client_id=JUB2JJHEBADCKSNVNDVK4ZFACKWCVIKUYSIOVOHYQBQ1DHQ0&client_secret=5TXU1MYQSB3F4TANJ1C4FXDLLNJVWAWJ1RSWETJYBZZRE3SK&v=20190819&near=new york&intent=browse&radius=10000&query=mothers ruin&limit=1`
+  async componentDidMount() {
+    await axios
+      .get(
+        `https://api.foursquare.com/v2/venues/search?client_id=J0QXDNXQGTX5GLM4PVRZ4RGIDFYUFQCXDXT20RLTGOLEYF3B&client_secret=WWGIIVWEVP3KTINZBGFYXDJ1TEGF4ILVLNF4XOBSCS2SYVZH&v=20190819&near=new york&intent=browse&radius=10000&query=mothers ruin&limit=1`
       )
       .then(res => {
         const venueID = res.data.response.venues[0].id;
         axios
           .get(
-            `https://api.foursquare.com/v2/venues/${venueID}?client_id=JUB2JJHEBADCKSNVNDVK4ZFACKWCVIKUYSIOVOHYQBQ1DHQ0&client_secret=5TXU1MYQSB3F4TANJ1C4FXDLLNJVWAWJ1RSWETJYBZZRE3SK&v=20190819`
+            `https://api.foursquare.com/v2/venues/${venueID}?client_id=J0QXDNXQGTX5GLM4PVRZ4RGIDFYUFQCXDXT20RLTGOLEYF3B&client_secret=WWGIIVWEVP3KTINZBGFYXDJ1TEGF4ILVLNF4XOBSCS2SYVZH&v=20190819`
           )
           .then(res => {
             const foursquareData = res.data.response.venue.rating;
@@ -42,13 +42,11 @@ class Ratings extends Component {
         console.log(`yelp: ${yelpData}`);
         this.setState({ yelpData: yelpData });
       });
-    
-
-}
+  }
   render() {
     return (
       <div className="ratingCircle">
-        {(this.state.yelpData + this.state.foursquareData)/2}
+        {((this.state.yelpData + this.state.foursquareData) / 2).toFixed(1)}
       </div>
     );
   }

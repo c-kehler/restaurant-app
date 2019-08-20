@@ -17,7 +17,9 @@
     "passport": "^0.4.0",
     "pg": "^7.12.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
