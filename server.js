@@ -94,7 +94,7 @@ app.get("/dashboard/:user_id/favorites", async (req, res) => {
     });
     res.json(user);
     console.log(user);
-  } catch (e) {
+  } catch (error) {
     throw error;
   }
 });
