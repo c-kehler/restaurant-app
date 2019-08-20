@@ -9,7 +9,7 @@ require("dotenv").config();
 const authRouter = require("./routers/authRouter");
 const appRouter = require("./routers/appRouter");
 const { authorized } = require("./auth/auth");
-
+const { User, Venue } = require("./models");
 // establishing the I/O port
 const PORT = process.env.PORT || 4567;
 
@@ -56,11 +56,37 @@ app.get("/users", async (req, res) => {
   }
 });
 
+app.post("/dashboard/:user_id", async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    const user = await User.findByPk(user_id);
+    const newFav = await Venue.create(req.body);
+    await user.addVenue(newFav);
+
+    // res.send(user);
+  } catch (e) {
+    throw e;
+  }
+});
+
+app.put("/dashboard/:user_id/:venue_id", async (req, res) => {
+  try {
+    const { user_id, venue_id } = req.params;
+    const user = await User.findByPk(user_id);
+    const venue = await Venue.findByPk(venue_id);
+    await user.removeVenue(venue);
+    res.send(user);
+  } catch (e) {
+    throw e;
+  }
+});
+
 if (process.env.NODE_ENV == "production") {
   app.use("*", (req, res) =>
     res.sendFile(path.join(__dirname, "./client/build", "index.html"))
   );
 }
+
 app.listen(PORT, () =>
   console.log(`App is up and running listening on port ${PORT}`)
 );
