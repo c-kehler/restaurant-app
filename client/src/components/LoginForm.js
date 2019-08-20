@@ -53,13 +53,13 @@ class LoginForm extends React.Component {
       return <Redirect to="/dashboard" />;
     }
     return (
-      <div>
-        {errorMessage}
+      <div className='login-form'>
         <h1>Login</h1>
+        <hr></hr>
         <form className="form" onSubmit={this.handleSubmitForm}>
           <div>
-            <label>email</label>
             <input
+              placeholder="Email"
               type="text"
               name="email"
               onChange={this.handleTextInput}
@@ -67,13 +67,14 @@ class LoginForm extends React.Component {
             />
           </div>
           <div>
-            <label>password</label>
             <input
+              placeholder="Password"
               type="password"
               name="password"
               onChange={this.handleTextInput}
               value={this.state.password}
             />
+                    {errorMessage}
           </div>
           <button>login</button>
         </form>

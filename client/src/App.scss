@@ -1,7 +1,16 @@
-#root {
+.App {
   display: flex;
-  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.app-container {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -20,28 +29,37 @@
   border: white solid 3px;
 }
 
+.search {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 300px;
+  margin: 0;
+  margin-bottom: 50px;
+}
+
 .ratingcard {
   display: flex;
   align-self: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 290px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  margin-top: 30px;
+  margin-top: 0px;
 
   h1 {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 5px;
-    margin-left: 10px;
+    margin-left: 30px;
     margin-right: 5px;
   }
 
   .phone-number {
     margin-top: -10px;
-    margin-left: 10px;
+    margin-left: 30px;
     font-size: 15px;
     color: grey;
   }
@@ -50,15 +68,15 @@
     color: black;
     padding: 0px 5px 0px 5px;
     color: grey;
-    margin-top: -10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: -0px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
 img {
   width: 100%;
-  height: 200px;
+  height: 230px;
   object-fit: cover;
   object-position: 0% 70%;
   border-top-left-radius: 10px;
@@ -70,7 +88,116 @@ img {
   display: flex;
   flex-direction: row;
 }
+.app-container {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+}
 
-// * {
-//   border: red solid 1px;
-// }
+.login-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-width: 40%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  hr {
+    background-color: rgba(128, 128, 128, 0.336);
+    height: 0px;
+    width: 100%;
+  }
+  input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.08);
+    height: 40px;
+    padding: 8px;
+    &:focus {
+      outline: 1px;
+      border: solid 2px #808dff;
+      box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.08);
+    }
+  }
+  h1 {
+    font-size: 25px;
+    align-self: center;
+    color: rgba(0, 0, 0, 0.705);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .errorMessage {
+      font-size: 15px;
+      color: rgba(255, 0, 0, 0.603);
+      font-weight: 500;
+    }
+
+    button {
+      width: 100%;
+      align-self: center;
+      border-radius: 5px;
+      color: white;
+      background-color: rgb(84, 84, 209);
+      height: 40px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+  }
+}
+
+.MyNavbar {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  button {
+    color: white;
+    // border-color: #808dffb9;
+    height: 40px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    transition: all 0.15s ease-in-out;
+    &:hover {
+      box-shadow: inset 0 1px 15px rgba(0, 0, 0, 0.3);
+      &:after {
+        transition: opacity 1s ease-in-out;
+      }
+    }
+  }
+  .link-button {
+    // width:50%;
+    // border-radius: 0px 0px 0px 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-right-width: 0;
+    background-color: #808dff;
+    border-color: #808dff;
+  }
+  .like-button {
+    // width:50%;
+    // border-radius: 0px 0px 10px 0px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 0, 0, 0.507);
+    border-color: rgba(255, 0, 0, 0.507);
+  }
+}
+
+* {
+  border: red solid 1px;
+}
+

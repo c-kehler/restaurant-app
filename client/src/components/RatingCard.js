@@ -37,9 +37,16 @@ class RatingCard extends Component {
                 </div>
               </div>
               <p className="venue-summary">{this.props.review}</p>
+              <div className="button-container">
+                <button className="link-button">
+                  <i class="fas fa-link" />
+                </button>
+                <button className="like-button">
+                  <i class="fas fa-heart" />
+                </button>
+              </div>
             </React.Fragment>
           ))}
-          <button>like</button>
         </React.Fragment>
       </div>
     );
