@@ -22,7 +22,9 @@ class RatingCard extends Component {
       address: this.props.cardData[0].location.address1,
       rating: parseInt(
         ((this.props.yelpData + this.props.foursquareData) / 2).toFixed(1)
-      )
+      ),
+      number: this.props.cardData[0].display_phone,
+      URL: this.props.cardData[0].image_url
     };
     console.log(this.props.userId);
     console.log(restObj);
