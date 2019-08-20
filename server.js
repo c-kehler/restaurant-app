@@ -62,9 +62,9 @@ app.post("/dashboard/:user_id", async (req, res) => {
     const user = await User.findByPk(user_id);
     const newFav = await Venue.create(req.body);
     await user.addVenue(newFav);
-    console.log(user)
+    console.log(user);
 
-    // res.send(user);
+    res.send(newFav);
   } catch (e) {
     throw e;
   }
@@ -81,23 +81,23 @@ app.put("/dashboard/:user_id/:venue_id", async (req, res) => {
   }
 });
 
-app.get("/dashboard/:user_id/favorites", async (req,res, )=> {
-  try{
-    const { user_id} = req.params;
-    const user = await User.findByPk(user_id,{
-      include: [{
-        model: Venue,
-        through: 'user_venues'
-        
-      }]
+app.get("/dashboard/:user_id/favorites", async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    const user = await User.findByPk(user_id, {
+      include: [
+        {
+          model: Venue,
+          through: "user_venues"
+        }
+      ]
     });
-    res.json(user)
-    console.log(user)
-
-  }catch(e){
-    throw error
+    res.json(user);
+    console.log(user);
+  } catch (e) {
+    throw error;
   }
-})
+});
 
 if (process.env.NODE_ENV == "production") {
   app.use("*", (req, res) =>

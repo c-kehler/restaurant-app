@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { addRestaurant } from "../services/apiService";
 
 class RatingCard extends Component {
   constructor(props) {
@@ -13,11 +14,17 @@ class RatingCard extends Component {
     };
   }
 
-  render() {
-    console.log("card data below");
+  handleFavorite = async e => {
+    e.preventDefault();
     console.log(this.props.cardData);
-    console.log(this.props.yelpData);
-    console.log(this.props.foursquareData);
+    const { name } = this.props.cardData[0].name;
+    await addRestaurant({
+      userId: this.props.userId,
+      cardData: this.props.cardData
+    });
+  };
+
+  render() {
     return (
       <div className="ratingcard">
         <React.Fragment>
@@ -39,7 +46,7 @@ class RatingCard extends Component {
               <p className="venue-summary">{this.props.review}</p>
             </React.Fragment>
           ))}
-          <button>like</button>
+          <button onClick={this.handleFavorite}>like</button>
         </React.Fragment>
       </div>
     );
