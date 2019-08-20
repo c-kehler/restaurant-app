@@ -19,7 +19,8 @@ class Auth extends React.Component {
     super(props);
     this.state = {
       isSignedIn: false,
-      user: {}
+      user: {},
+      restToFav: {}
     };
   }
 
@@ -82,16 +83,23 @@ class Auth extends React.Component {
           <Link to="/dashboard">Dashboard</Link>
           <Link to="login">Login</Link>
           <Link to="/signup">Sign Up</Link>
+          <button onClick={this.signOutUser}>sign out</button>
         </nav>
 
         <main>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={props => <Home {...props} user={user} />}
+          />
+
           <Protectedroute
             path={`/dashboard/`}
+            component={Dashboard}
             user={user}
             venues={user.venues}
-            component={Dashboard}
           />
+
           <Route
             path="/login"
             render={props => (
@@ -102,6 +110,7 @@ class Auth extends React.Component {
               />
             )}
           />
+
           <Route
             path="/signup"
             render={props => (

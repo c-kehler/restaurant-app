@@ -13,9 +13,7 @@ const apiClient = axios.create({
 export const login = async data => {
   try {
     const response = await apiClient.post("/auth/login", data);
-    console.log(data);
     const { token, user } = response.data;
-
     localStorage.setItem("token", token);
     return user;
   } catch (error) {
@@ -35,12 +33,10 @@ export const getProfile = async () => {
 
 export const signUp = async data => {
   try {
-    console.log(data);
     const response = await apiClient.post("/auth/signup", data);
     const { token, user } = response.data;
     localStorage.setItem("token", token);
 
-    console.log(user);
     return user;
   } catch (e) {
     throw e;
@@ -48,16 +44,15 @@ export const signUp = async data => {
 };
 
 export const addRestaurant = async data => {
-  try {
-    console.log(data);
-    const response = await apiClient.post("/auth/signup", data);
-    const { token, user } = response.data;
-    localStorage.setItem("token", token);
-    console.log(user);
-    return user;
-  } catch (e) {
-    throw e;
-  }
+  console.log(data);
+  let restObj = {};
+  const { userId, cardData } = data;
+  cardData.map(data => (restObj.name = data.name));
+  restObj.address = "tempAddress";
+  restObj.rating = 1;
+  console.log(restObj);
+  const response = await apiClient.post(`/dashboard/${userId}`, restObj);
+  return response;
 };
 
 export const removeFavRestaurant = async data => {
