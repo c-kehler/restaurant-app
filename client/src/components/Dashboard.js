@@ -1,22 +1,27 @@
 import React from "react";
+import RatingCard from "../components/RatingCard";
 
-function Dashboard(props) {
-  const { user, venues } = props;
-
-  let venueToShow;
-
-  if (venues) {
-    venueToShow = venues[0].address;
-  } else {
-    venueToShow = "no venue";
+class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  return (
-    <div>
-      <h1>{user.name ? `Welcome back ${user.name}` : null}</h1>
-      <h2>{venues[0].address}</h2>
-    </div>
-  );
+  render() {
+    const { user, venues } = this.props;
+    let venueToShow;
+    if (venues) {
+      venueToShow = venues[0].address;
+    } else {
+      venueToShow = "no venue";
+    }
+
+    return (
+      <div>
+        <h1>{user.name ? `Welcome back ${user.name}` : null}</h1>
+      </div>
+    );
+  }
 }
 
 export default Dashboard;

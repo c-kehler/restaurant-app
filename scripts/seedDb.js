@@ -42,8 +42,8 @@ const seedDb = async () => {
       address: "10 w 29th"
     });
 
-    await venue2.setUsers([chris]);
-    await venue1.setUsers([alex]);
+    await chris.setVenues([venue1]);
+    await alex.setVenues([venue2]);
   } catch (e) {
     console.error(e);
   }
