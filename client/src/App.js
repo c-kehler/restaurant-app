@@ -130,6 +130,7 @@ class App extends React.Component {
             )}
           />
         </main>
+        <RatingCard/>
       </div>
     );
   }

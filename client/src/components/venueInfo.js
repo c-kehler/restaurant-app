@@ -9,7 +9,8 @@ class VenueInfo extends Component {
     super(props);
     this.state = {
       cardData: [],
-      input: ""
+      input: "",
+      review: ""
     };
   }
   async componentDidMount() {
@@ -25,13 +26,34 @@ class VenueInfo extends Component {
       })
       .then(res => {
         this.setState({ cardData: res.data.businesses });
-        console.log(this.state.cardData);
+      });
+    await axios
+    .get(URL, {
+      params: {},
+      headers: {
+        Authorization:
+          "Bearer Mfwm2_zb0qrWMcBjiB3Qw6GSIIG38TS-VdjZepk1X9EvQFw9A9fA24dIzoxyi5Xz4YjBnNnOMb0SGWTuzjTLN4lI9ZDZf9_9Mg7tFPyE8mzapp2y8tnEGbvWH6haXXYx"
+      }
+    })
+      .then(res => {
+        console.log(res)
+        const venueID = res.data.businesses[0].id;
+        console.log(venueID)
+         axios.get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${venueID}/reviews`, {
+          params: {},
+          headers: {
+            Authorization:
+              "Bearer Mfwm2_zb0qrWMcBjiB3Qw6GSIIG38TS-VdjZepk1X9EvQFw9A9fA24dIzoxyi5Xz4YjBnNnOMb0SGWTuzjTLN4lI9ZDZf9_9Mg7tFPyE8mzapp2y8tnEGbvWH6haXXYx"
+          }
+        } )
+           .then(res => {
+            console.log(res)
+            const review = res.data.reviews[0].text;
+            console.log(review)
+            this.setState({ review: review });
+          });
       });
   }
-
-  handleChange = event => {
-    this.setState({ input: event.target.value });
-  };
 
   render() {
     return (
@@ -47,8 +69,7 @@ class VenueInfo extends Component {
               </div>
             </div>
             <p className="venue-summary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore{" "}
+              {this.state.review}
             </p>
           </React.Fragment>
         ))}
