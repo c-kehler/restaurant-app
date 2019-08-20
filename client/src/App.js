@@ -2,6 +2,8 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 import "./App.css";
+import RatingCard from "./components/card";
+import Search from "./components/search";
 
 //Components
 import Home from "./components/Home";
