@@ -17,11 +17,18 @@ class RatingCard extends Component {
   handleFavorite = async e => {
     e.preventDefault();
     console.log(this.props.cardData);
-    const { name } = this.props.cardData[0].name;
-    await addRestaurant({
-      userId: this.props.userId,
-      cardData: this.props.cardData
-    });
+    const restObj = {
+      name: this.props.cardData[0].name,
+      address: this.props.cardData[0].location.address1,
+      rating: parseInt(
+        ((this.props.yelpData + this.props.foursquareData) / 2).toFixed(1)
+      ),
+      number: this.props.cardData[0].display_phone,
+      URL: this.props.cardData[0].image_url
+    };
+    console.log(this.props.userId);
+    console.log(restObj);
+    await addRestaurant(this.props.userId, restObj);
   };
 
   render() {
