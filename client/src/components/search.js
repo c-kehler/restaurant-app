@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 
-class Search extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            input: ''
-        }
+class SearchBar extends Component {    
+    constructor(){
+        super()
+       
     }
-    handleChange = (event) => {
-        event.preventDefault();
-        this.props.handleChange(event)
-    }
+    // handleSearch = (event) => {
+    //     event.preventDefault();
+    //     this.props.handleSearch()
+    // }
+      handleChange = (event) => {
+          event.preventDefault();
+          this.props.handleChange(event)
+      }
 
 render(){
     return(
-        <form className="search"  onSubmit={this.handleInput}>
+        <form className="search" onSubmit={this.props.handleSearch} >
         <input className='search-bar' type="text" onChange={this.handleChange}/>
         <input className="search-bar"  value='Search' type="submit"></input>
         </form>
@@ -23,4 +25,4 @@ render(){
 }    
  }
 
- export default Search
+ export default SearchBar

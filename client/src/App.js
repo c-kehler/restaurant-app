@@ -2,7 +2,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 import "./App.css";
-import RatingCard from "./components/card";
 import Search from "./components/search";
 
 //Components
@@ -101,6 +100,7 @@ class App extends React.Component {
         </nav>
 
         <main>
+         
           <Route exact path="/" component={Home} />
           <Protectedroute
             path={`/dashboard/`}
@@ -130,7 +130,7 @@ class App extends React.Component {
             )}
           />
         </main>
-        <RatingCard/>
+        {/* <RatingCard/> */}
       </div>
     );
   }
