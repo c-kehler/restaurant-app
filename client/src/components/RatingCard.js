@@ -25,7 +25,9 @@ class RatingCard extends Component {
       number: this.props.cardData[0].venue.contact.formattedPhone,
       URL: `${this.props.cardData[0].venue.bestPhoto.prefix}500x500${
         this.props.cardData[0].venue.bestPhoto.suffix
-      }`
+      }`,
+      Summary: this.props.cardData[0].venue.tips.groups[0].items[0].text,
+      link: this.props.cardData[0].venue.url
     };
 
     await addRestaurant(this.props.userId, restObj);
