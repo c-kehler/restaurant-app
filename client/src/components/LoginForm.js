@@ -50,7 +50,15 @@ class LoginForm extends React.Component {
     }
     if (isSignedIn) {
       console.log(this.props);
-      return <Redirect to="/dashboard" />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/dashboard",
+            state: { user_id: "name" }
+          }}
+        />
+      );
+      // return <Redirect to="/dashboard" />;
     }
     return (
       <div className='login-form'>

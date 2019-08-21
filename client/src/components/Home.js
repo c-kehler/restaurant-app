@@ -22,12 +22,15 @@ class Home extends React.Component {
       input: event.target.value
     });
   };
+
   handleSearch = async e => {
     e.preventDefault();
     const restObj = {};
     await axios
       .get(
+
         `https://api.foursquare.com/v2/venues/search?client_id=M035A0FSW0AS3E4PXOP5MLJIVDKX2SZFEJJSK3D3MLAZUXFA&client_secret=1Q40YKC1KVZHT3XMNHJP0UYQYQKYUVYNEIQTOPLSG4DMTRJT&v=20190819&near=new york&intent=browse&radius=10000&query=${
+     
           this.state.input
         }&limit=1`
       )
@@ -36,6 +39,7 @@ class Home extends React.Component {
         restObj.name = res.data.response.venues[0].name;
         const venueID = res.data.response.venues[0].id;
         console.log("test");
+
         await axios
           .get(
             `https://api.foursquare.com/v2/venues/${venueID}?client_id=J0QXDNXQGTX5GLM4PVRZ4RGIDFYUFQCXDXT20RLTGOLEYF3B&client_secret=WWGIIVWEVP3KTINZBGFYXDJ1TEGF4ILVLNF4XOBSCS2SYVZH&v=20190819`
@@ -65,7 +69,9 @@ class Home extends React.Component {
         await this.setState({ yelpVenueID: res.data.businesses[0].id });
       })
       .then(async res => {
+
         console.log(res);
+
         await axios
           .get(
             `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${
@@ -91,7 +97,9 @@ class Home extends React.Component {
     const { yelpData, foursquareData, review, cardData } = this.state;
     // const imgURL = this.state.cardData[0]
     return (
+
       <React.Fragment>
+
         <SearchBar
           handleChange={this.handleChange}
           handleSearch={this.handleSearch}
@@ -102,8 +110,12 @@ class Home extends React.Component {
           foursquareData={foursquareData}
           review={review}
           cardData={cardData}
-        />
+
+     
+          userId={this.props.user.id}
+          />
       </React.Fragment>
+
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { addRestaurant } from "../services/apiService";
 
 class RatingCard extends Component {
   constructor(props) {
@@ -13,11 +14,24 @@ class RatingCard extends Component {
     };
   }
 
-  render() {
-    console.log("card data below");
+  handleFavorite = async e => {
+    e.preventDefault();
     console.log(this.props.cardData);
-    console.log(this.props.yelpData);
-    console.log(this.props.foursquareData);
+    const restObj = {
+      name: this.props.cardData[0].name,
+      address: this.props.cardData[0].location.address1,
+      rating: parseInt(
+        ((this.props.yelpData + this.props.foursquareData) / 2).toFixed(1)
+      ),
+      number: this.props.cardData[0].display_phone,
+      URL: this.props.cardData[0].image_url
+    };
+    console.log(this.props.userId);
+    console.log(restObj);
+    await addRestaurant(this.props.userId, restObj);
+  };
+
+  render() {
     return (
       <div className="ratingcard">
         <React.Fragment>
@@ -41,7 +55,7 @@ class RatingCard extends Component {
               <a href = {data.venue.url} target="_blank"><button className="link-button" >
                   <i class="fas fa-link" />
                 </button></a>
-                <button className="like-button">
+                <button  onClick={this.handleFavorite} className="like-button">
                   <i class="fas fa-heart" />
                 </button>
               </div>
