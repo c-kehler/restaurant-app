@@ -3,6 +3,8 @@ module.exports = (db, Sequelize) => {
     rating: Sequelize.DOUBLE,
     name: Sequelize.STRING,
     number: Sequelize.STRING,
-    URL: Sequelize.STRING
+    URL: Sequelize.STRING,
+    Summary: Sequelize.TEXT,
+    link: Sequelize.STRING
   });
 };

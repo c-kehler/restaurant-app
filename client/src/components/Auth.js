@@ -41,6 +41,7 @@ class Auth extends React.Component {
   loginUser = async credentials => {
     try {
       const user = await login(credentials);
+      console.log(user);
       this.setState(state => {
         return {
           isSignedIn: true,
@@ -55,6 +56,7 @@ class Auth extends React.Component {
   signUpUser = async credentials => {
     try {
       const user = await signUp(credentials);
+
       this.setState(state => {
         return {
           isSignedIn: true,
@@ -68,7 +70,7 @@ class Auth extends React.Component {
 
   signOutUser = () => {
     authService.signOut();
-
+    localStorage.clear();
     this.setState(state => {
       return { isSignedIn: false, user: {} };
     });
@@ -88,7 +90,6 @@ class Auth extends React.Component {
           path={`/dashboard/`}
           component={Dashboard}
           user={user}
-          venues={user.venues}
         />
 
         <Route
@@ -113,6 +114,7 @@ class Auth extends React.Component {
             />
           )}
         />
+        <button onClick={this.signOutUser}>sign out</button>
       </div>
     );
   }
