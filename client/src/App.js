@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import Auth from "./components/Auth";
 //Components
+import MyNavbar from "./components/Navbar";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <Auth />;
+    return (
+      <div className= "App">
+        <MyNavbar />
+        <Auth />
+      </div>
+    );
   }
 }
 

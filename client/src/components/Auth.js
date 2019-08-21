@@ -78,6 +78,7 @@ class Auth extends React.Component {
     const { isSignedIn, user } = this.state;
     return (
       <div className="app-container">
+
         <nav>
           <Link to="/">Home</Link>
           <Link to="/dashboard">Dashboard</Link>
@@ -92,6 +93,7 @@ class Auth extends React.Component {
             path="/"
             render={props => <Home {...props} user={user} />}
           />
+
 
           <Protectedroute
             path={`/dashboard/`}
@@ -122,7 +124,6 @@ class Auth extends React.Component {
               />
             )}
           />
-        </main>
       </div>
     );
   }
