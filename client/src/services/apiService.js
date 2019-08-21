@@ -72,13 +72,12 @@ export const removeFavRestaurant = async data => {
   }
 };
 
-export const showFaves = async () =>{
-  try{
-  console.log("where")
-    const resp = await apiClient.get(`/dashboard/1/favorites`)
-    return resp.data.venues
+export const showFaves = async () => {
+  try {
+    console.log("where");
+    const resp = await apiClient.get(`/dashboard/1/favorites`);
+    return resp.data.venues;
+  } catch (error) {
+    throw error;
   }
-  catch(error){
-    throw error
-  }
-}
+};

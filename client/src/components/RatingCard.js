@@ -18,16 +18,17 @@ class RatingCard extends Component {
     e.preventDefault();
     console.log(this.props.cardData);
     const restObj = {
-      name: this.props.cardData[0].name,
-      address: this.props.cardData[0].location.address1,
+      name: this.props.cardData[0].venue.name,
       rating: parseInt(
         ((this.props.yelpData + this.props.foursquareData) / 2).toFixed(1)
       ),
-      number: this.props.cardData[0].display_phone,
-      URL: this.props.cardData[0].image_url
+      number: this.props.cardData[0].venue.contact.formattedPhone,
+      URL: `${this.props.cardData[0].venue.bestPhoto.prefix}500x500${
+        this.props.cardData[0].venue.bestPhoto.suffix
+      }`
     };
     console.log(this.props.userId);
-    console.log(restObj);
+    // console.log(restObj);
     await addRestaurant(this.props.userId, restObj);
   };
 
@@ -37,7 +38,11 @@ class RatingCard extends Component {
         <React.Fragment>
           {this.props.cardData.map(data => (
             <React.Fragment>
-              <img src={`${data.venue.bestPhoto.prefix}500x500${data.venue.bestPhoto.suffix}`}/>
+              <img
+                src={`${data.venue.bestPhoto.prefix}500x500${
+                  data.venue.bestPhoto.suffix
+                }`}
+              />
               <div className="ratingandheader">
                 <div className="ratingCircle">
                   {(
@@ -47,15 +52,21 @@ class RatingCard extends Component {
                 </div>
                 <div>
                   <h1 className="restaurantName">{data.venue.name}</h1>
-                  <p className="phone-number">{data.venue.contact.formattedPhone}</p>
+                  <p className="phone-number">
+                    {data.venue.contact.formattedPhone}
+                  </p>
                 </div>
               </div>
-              <p className="venue-summary">"{data.venue.tips.groups[0].items[0].text}"</p>
-              <div className="button-container"> 
-              <a href = {data.venue.url} target="_blank"><button className="link-button" >
-                  <i class="fas fa-link" />
-                </button></a>
-                <button  onClick={this.handleFavorite} className="like-button">
+              <p className="venue-summary">
+                "{data.venue.tips.groups[0].items[0].text}"
+              </p>
+              <div className="button-container">
+                <a href={data.venue.url} target="_blank">
+                  <button className="link-button">
+                    <i class="fas fa-link" />
+                  </button>
+                </a>
+                <button onClick={this.handleFavorite} className="like-button">
                   <i class="fas fa-heart" />
                 </button>
               </div>
