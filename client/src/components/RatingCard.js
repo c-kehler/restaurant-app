@@ -23,7 +23,7 @@ class RatingCard extends Component {
         <React.Fragment>
           {this.props.cardData.map(data => (
             <React.Fragment>
-              <img src={data.image_url} />
+              <img src={`${data.venue.bestPhoto.prefix}500x500${data.venue.bestPhoto.suffix}`}/>
               <div className="ratingandheader">
                 <div className="ratingCircle">
                   {(
@@ -32,15 +32,15 @@ class RatingCard extends Component {
                   ).toFixed(1)}
                 </div>
                 <div>
-                  <h1 className="restaurantName">{data.name}</h1>
-                  <p className="phone-number">{data.display_phone}</p>
+                  <h1 className="restaurantName">{data.venue.name}</h1>
+                  <p className="phone-number">{data.venue.contact.formattedPhone}</p>
                 </div>
               </div>
-              <p className="venue-summary">{this.props.review}</p>
-              <div className="button-container">
-                <button className="link-button">
+              <p className="venue-summary">"{data.venue.tips.groups[0].items[0].text}"</p>
+              <div className="button-container"> 
+              <a href = {data.venue.url} target="_blank"><button className="link-button" >
                   <i class="fas fa-link" />
-                </button>
+                </button></a>
                 <button className="like-button">
                   <i class="fas fa-heart" />
                 </button>

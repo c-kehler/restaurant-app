@@ -38,11 +38,12 @@ class Home extends React.Component {
         console.log("test");
         await axios
           .get(
-            `https://api.foursquare.com/v2/venues/${venueID}?client_id=M035A0FSW0AS3E4PXOP5MLJIVDKX2SZFEJJSK3D3MLAZUXFA&client_secret=1Q40YKC1KVZHT3XMNHJP0UYQYQKYUVYNEIQTOPLSG4DMTRJT&v=20190819`
+            `https://api.foursquare.com/v2/venues/${venueID}?client_id=J0QXDNXQGTX5GLM4PVRZ4RGIDFYUFQCXDXT20RLTGOLEYF3B&client_secret=WWGIIVWEVP3KTINZBGFYXDJ1TEGF4ILVLNF4XOBSCS2SYVZH&v=20190819`
           )
-          .then(res => {
+          .then(async res => {
             const foursquareData = res.data.response.venue.rating;
             this.setState({ foursquareData: foursquareData });
+            await this.setState({ cardData: [res.data.response] });
           });
       });
 
@@ -58,7 +59,6 @@ class Home extends React.Component {
         }
       })
       .then(async res => {
-        this.setState({ cardData: res.data.businesses });
         const yelpData = parseInt(res.data.businesses[0].rating) * 2;
         restObj.yelpRating = res.data.businesses;
         await this.setState({ yelpData: yelpData });
