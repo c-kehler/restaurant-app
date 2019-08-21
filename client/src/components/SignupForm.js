@@ -63,39 +63,68 @@ class SignupForm extends React.Component {
       return <Redirect to="/dashboard" />;
     }
     return (
-      <div>
-        {errorMessage}
-        <h1>Sign Up</h1>
-        <form className="form" onSubmit={this.handleSubmitForm}>
-          <div>
-            <label>Name</label>
+      <div className="signup-container">
+        <div className="signup-info-container">
+          <p className="info-header">Let's get to searching!</p>
+          <div className="signup-info">
+            <div className="info-icons">
+              <div className="icon">
+                <i class="fas fa-search" />
+              </div>
+              <div className="icon">
+                <i class="fas fa-star" />
+              </div>
+              <div className="icon">
+                <i class="fas fa-save" />
+              </div>
+            </div>
+            <div>
+              <p className="info-sub-header">Simple to use!</p>
+              <p className="sub-info">
+                Just enter the name of a bar or resturaunt in New York you want
+                more info on.{" "}
+              </p>
+              <p className="info-sub-header">Easier to decide</p>
+              <p className="sub-info">
+                Our server magic will aggregate the ratings and give you the
+                true 1-10!
+              </p>
+              <p className="info-sub-header">Save Your Search</p>
+              <p className="sub-info">
+                Found a place you love? Click the favorite button to save it to
+                your dashboard.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="form-container">
+          <h1>Sign Up</h1>
+          <form className="signup-form" onSubmit={this.handleSubmitForm}>
             <input
+              placeholder="Username"
               type="text"
               name="name"
               onChange={this.handleTextInput}
               value={this.state.username}
             />
-          </div>
-          <div>
-            <label>Email</label>
             <input
+              placeholder="Email Address"
               type="text"
               name="email"
               onChange={this.handleTextInput}
               value={this.state.email}
             />
-          </div>
-          <div>
-            <label>Password</label>
             <input
+              placeholder="Password"
               type="text"
               name="password"
               onChange={this.handleTextInput}
               value={this.state.password}
             />
-          </div>
-          <button>Sign Up</button>
-        </form>
+
+            <button>Sign Up</button>
+          </form>
+        </div>
       </div>
     );
   }
