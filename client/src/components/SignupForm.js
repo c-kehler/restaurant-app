@@ -122,7 +122,7 @@ class SignupForm extends React.Component {
               value={this.state.password}
             />
 
-            <button>Sign Up</button>
+            <button>Sign Up!</button>
           </form>
         </div>
       </div>
