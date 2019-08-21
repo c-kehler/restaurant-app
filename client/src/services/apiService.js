@@ -44,17 +44,6 @@ export const signUp = async data => {
 };
 
 export const addRestaurant = async (userId, restaurant) => {
-  // console.log(data);
-  // let restObj = {};
-  // const { userId, cardData } = data;
-  // cardData.map(data => (restObj.name = data.name));
-  // console.log(cardData[0].location.address1);
-  // console.log(cardData[0].rating);
-  // restObj.address = cardData[0].location.address1;
-  // restObj.rating = cardData[0].rating;
-  // console.log(restObj);
-  console.log(userId);
-  console.log(restaurant);
   const response = await apiClient.post(`/dashboard/${userId}`, restaurant);
   return response;
 };

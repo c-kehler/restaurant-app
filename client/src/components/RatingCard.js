@@ -27,8 +27,7 @@ class RatingCard extends Component {
         this.props.cardData[0].venue.bestPhoto.suffix
       }`
     };
-    console.log(this.props.userId);
-    // console.log(restObj);
+
     await addRestaurant(this.props.userId, restObj);
   };
 
