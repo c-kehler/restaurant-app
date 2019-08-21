@@ -41,6 +41,7 @@ class Auth extends React.Component {
   loginUser = async credentials => {
     try {
       const user = await login(credentials);
+      localStorage.setItem("userID", user.id);
       console.log(user);
       this.setState(state => {
         return {
@@ -56,6 +57,7 @@ class Auth extends React.Component {
   signUpUser = async credentials => {
     try {
       const user = await signUp(credentials);
+      localStorage.setItem("userID", user.id);
 
       this.setState(state => {
         return {

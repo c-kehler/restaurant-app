@@ -1,5 +1,4 @@
 import React from "react";
-import RatingCard from "../components/RatingCard";
 import { showFaves } from "../services/apiService";
 import { unFavorite } from "../services/apiService";
 
