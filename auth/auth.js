@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { User } = require("../models/index.js");
+const { User, Venue } = require("../models/index.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWTStrategy = require("passport-jwt").Strategy;
@@ -38,9 +38,14 @@ passport.use(
     async (email, password, done) => {
       try {
         // find user by their email
-        const user = await User.findOne({ where: { email: email } });
-        console.log(user.email);
-        console.log(`*** user: ${user} ***`);
+        // console.log(id);
+        const user = await User.findOne({
+          where: { email: email },
+          include: [{ model: Venue, through: "user_venues" }]
+        });
+        // console.log(user.id);
+        // console.log(user.email);
+        // console.log(`*** user: ${user} ***`);
         if (!user) {
           return done(null, false, { message: "User not found" });
         }
@@ -58,6 +63,7 @@ passport.use(
     }
   )
 );
+
 passport.use(
   "signup",
   new LocalStrategy(

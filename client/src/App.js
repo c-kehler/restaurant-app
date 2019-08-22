@@ -1,35 +1,26 @@
-import React, { Component } from "react";
+//Packages and libraries
+import React from "react";
 import "./App.css";
-import RatingCard from './components/card'
-import Search from './components/search'
+import Auth from "./components/Auth";
+//Components
+import MyNavbar from "./components/Navbar";
 
-
-
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
-    }
+      isSignedIn: false,
+      user: {}
+    };
   }
 
-  
-
-    // handleInput = (event) => {
-    //     event.preventDefault();
-    //     this.props.updateSearch()
-    // }
-    
-  //   handleChange = (event) => {
-  //    this.setState({
-  //      input: event.target.value
-  //    })
-  // }
   render() {
-    return <div>
-      <RatingCard/>
-      {/* <Search handleChange={handleChange} /> */}
-    </div>;
+    return (
+      <div className= "App">
+        <MyNavbar />
+        <Auth />
+      </div>
+    );
   }
 }
 
